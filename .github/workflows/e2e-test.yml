@@ -29,7 +29,8 @@ jobs:
         with:
           runCmd: |
             cd to-dos-local-env
-            npm run start-local-env &  
+            npm run start-local-env &  # Запустите ваш локальный сервер
+          checkoutPath: to-dos-local-env  # Убедитесь, что путь указывает на правильный каталог
 
       # Шаг для сборки Docker-образа UI
       - name: Build UI Docker image
