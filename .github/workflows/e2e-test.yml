@@ -32,11 +32,6 @@ jobs:
             npm run start-local-env &
           checkoutPath: to-dos-local-env
 
-      - name: Install Local Env dependencies
-        run: |
-          cd to-dos-local-env
-          npm ci
-
       - name: Create cluster
         run: |
           cd to-dos-local-env
