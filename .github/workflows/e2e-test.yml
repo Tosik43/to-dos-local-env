@@ -23,6 +23,12 @@ jobs:
           repository: Tosik43/to-dos-ui
           path: to-dos-ui
 
+      - name: Install Helm and Helmfile
+        run: |
+          curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+          curl -L https://github.com/roboll/helmfile/releases/latest/download/helmfile_linux_amd64 -o /usr/local/bin/helmfile
+          chmod +x /usr/local/bin/helmfile
+
       # Шаг для запуска Local Env через devcontainer
       - name: Run Local Env in Dev Container
         uses: devcontainers/ci@v0.3
