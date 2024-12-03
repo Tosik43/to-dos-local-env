@@ -34,7 +34,6 @@ jobs:
           curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
           curl -L https://github.com/roboll/helmfile/releases/latest/download/helmfile_linux_amd64 -o /usr/local/bin/helmfile
           chmod +x /usr/local/bin/helmfile
-          helm plugin install https://github.com/databus23/helm-diff
 
       # Шаг для запуска Local Env через devcontainer
       - name: Run Local Env in Dev Container
