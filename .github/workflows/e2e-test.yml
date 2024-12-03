@@ -32,6 +32,11 @@ jobs:
             npm run start-local-env &
           checkoutPath: to-dos-local-env
 
+      - name: Install Local Env dependencies
+        run: |
+          cd to-dos-local-env
+          npm ci
+
       - name: Create cluster
         run: |
           cd to-dos-local-env
@@ -40,11 +45,6 @@ jobs:
       - name: Install Helm
         run: |
           curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
-
-      - name: Install Helmfile
-        run: |
-          curl -sSL https://github.com/helmfile/helmfile/releases/latest/download/helmfile_linux_amd64 -o /usr/local/bin/helmfile
-          chmod +x /usr/local/bin/helmfile
 
       - name: Deploy to cluster
         run: |
