@@ -31,21 +31,7 @@ jobs:
             cd to-dos-local-env
             npm run start-local-env &
           checkoutPath: to-dos-local-env
-
-      - name: Create cluster
-        run: |
-          cd to-dos-local-env
-          kind create cluster --name to-dos --config kind-local-config.yaml --kubeconfig ./.to-dos-cluster-kubeconfig
-
-      - name: Install Helm
-        run: |
-          curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
-
-      - name: Deploy to cluster
-        run: |
-          cd to-dos-local-env
-          helmfile cache cleanup && helmfile --environment local --namespace local -f deploy/helmfile.yaml apply
-
+          
       # Шаг для сборки и запуска Docker-образа UI
       - name: Build UI Docker image
         run: |
@@ -64,5 +50,5 @@ jobs:
       - name: Stop Local Env
         if: always()  
         run: |
-          docker stop todos-local-env || true
-          docker rm todos-local-env || true
+          docker stop to-dos-local-env || true
+          docker rm to-dos-local-env || true
