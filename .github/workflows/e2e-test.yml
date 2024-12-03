@@ -23,6 +23,12 @@ jobs:
           repository: Tosik43/to-dos-ui
           path: to-dos-ui
 
+      - name: Check out API code
+        uses: actions/checkout@v2
+        with:
+          repository: Tosik43/to-dos-api
+          path: to-dos-api
+
       - name: Install Helm and Helmfile
         run: |
           curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
