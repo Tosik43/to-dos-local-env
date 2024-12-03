@@ -34,7 +34,7 @@ jobs:
 
       - name: Create Cluster
         run: |
-          cd to-dos-local-dev
+          cd to-dos-local-env
           kind create cluster --name to-dos --config kind-local-config.yaml --kubeconfig ./.to-dos-cluster-kubeconfig
           
       # Шаг для сборки и запуска Docker-образа UI
