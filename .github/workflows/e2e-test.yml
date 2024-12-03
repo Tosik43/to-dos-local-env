@@ -39,8 +39,6 @@ jobs:
 
       - name: Deploy to Kubernetes
         run: |
-          helm repo add my-repo https://example.com/helm-charts
-          helm repo update
           helmfile --environment local --namespace local -f to-dos-local-env/deploy/helmfile.yaml apply
           
       # Шаг для сборки и запуска Docker-образа UI
