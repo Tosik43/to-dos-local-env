@@ -41,5 +41,6 @@ jobs:
       - name: Run e2e tests
         run: |
           cd to-dos-ui
+          npm ci
           npm run cypress:run:e2e:local-env
   
