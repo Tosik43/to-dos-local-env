@@ -6,19 +6,19 @@ on:
 
 jobs:
   e2e-tests:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
       # Клонирование репозитория Local Env
       - name: Check out Local Env code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           repository: Tosik43/to-dos-local-env 
           path: to-dos-local-env
           
       # Клонирование репозитория UI
       - name: Check out UI code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           repository: Tosik43/to-dos-ui
           path: to-dos-ui
@@ -36,15 +36,7 @@ jobs:
             kind create cluster --name to-dos --config kind-local-config.yaml --kubeconfig ./.to-dos-cluster-kubeconfig
             helmfile --environment local --namespace local -f deploy/helmfile.yaml apply
           checkoutPath: to-dos-local-env
-
-      # Запуск localhost:5173
-      - name: Run start-local-env
-        run: |
-          cd to-dos-ui
-          npm ci
-          npm run start-local-env &
-          sleep 10
-      
+          
       # Запуск E2E тестов
       - name: Run e2e tests
         run: |
